@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Training Portal";
+}
+
+<div class="container mt-4">
+
+    <!-- Hero Section -->
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-4">
+            <h1 class="display-6 fw-bold">@ViewBag.PortalName</h1>
+            <p class="col-md-8 fs-5">
+                Welcome to the post-placement training portal for .NET & C#.
+            </p>
+            <p><strong>Admin Contact:</strong> @ViewBag.AdminEmail</p>
+        </div>
+    </div>
+
+    <!-- Technologies Section -->
+    <h3 class="mb-3">Technologies Covered</h3>
+    <div class="row mb-4">
+        <div class="col-md-3"><div class="card p-3">C#</div></div>
+        <div class="col-md-3"><div class="card p-3">.NET Core</div></div>
+        <div class="col-md-3"><div class="card p-3">ASP.NET MVC</div></div>
+        <div class="col-md-3"><div class="card p-3">SQL Server</div></div>
+    </div>
+
+    <!-- Courses Section -->
+    <h3 class="mb-3">Training Tracks</h3>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">Foundation C# Programming</li>
+        <li class="list-group-item">Object Oriented Design in .NET</li>
+        <li class="list-group-item">ASP.NET Core MVC</li>
+        <li class="list-group-item">Web API & Microservices (Intro)</li>
+    </ul>
+
+    <!-- Trainers Section -->
+    <h3 class="mb-3">Trainers</h3>
+    <div class="row mb-4">
+        <div class="col-md-4">👨‍🏫 Trainer 1 – .NET</div>
+        <div class="col-md-4">👩‍🏫 Trainer 2 – C#</div>
+        <div class="col-md-4">👨‍🏫 Trainer 3 – SQL</div>
+    </div>
+
+    <!-- Assessments Section -->
+    <h3 class="mb-3">Assessments</h3>
+    <table class="table table-bordered mb-4">
+        <thead class="table-light">
+            <tr>
+                <th>Assessment</th>
+                <th>Technology</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Quiz 1</td>
+                <td>C# Basics</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>Assignment 1</td>
+                <td>ASP.NET MVC</td>
+                <td>Pending</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
