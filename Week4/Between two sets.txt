@@ -1,0 +1,38 @@
+ int gcdB = b[0];
+    for (int i = 1; i < b.Count; i++)
+    {
+        int x = gcdB;
+        int y = b[i];
+        while (y != 0)
+        {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        gcdB = x;
+    }
+
+    int lcmA = a[0];
+    for (int i = 1; i < a.Count; i++)
+    {
+        int x = lcmA;
+        int y = a[i];
+        while (y != 0)
+        {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        lcmA = (lcmA * a[i]) / x;
+    }
+
+    int count = 0;
+    for (int i = lcmA; i <= gcdB; i += lcmA)
+    {
+        if (gcdB % i == 0)
+            count++;
+    }
+
+    return count;
+}
+
