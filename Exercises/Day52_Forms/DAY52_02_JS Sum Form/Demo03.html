@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sum Form</title>
+
+    <script>
+
+        function validateInput() {
+
+            var n1 = document.getElementById("num1");
+            var n2 = document.getElementById("num2");
+
+            if (n1.value == "") {
+                n1.style.backgroundColor = "red";
+            }
+            else if (isNaN(n1.value)) {
+                n1.style.backgroundColor = "yellow";
+            }
+            else {
+                n1.style.backgroundColor = "white";
+            }
+
+            if (n2.value == "") {
+                n2.style.backgroundColor = "red";
+            }
+            else if (isNaN(n2.value)) {
+                n2.style.backgroundColor = "yellow";
+            }
+            else {
+                n2.style.backgroundColor = "white";
+            }
+
+        }
+
+        function calculateSum() {
+
+            var n1 = document.getElementById("num1");
+            var n2 = document.getElementById("num2");
+            var result = document.getElementById("result");
+
+            var v1 = n1.value;
+            var v2 = n2.value;
+
+            if (v1 == "" || v2 == "") {
+                result.value = "Error: Enter values";
+                return;
+            }
+
+            if (isNaN(v1) || isNaN(v2)) {
+                result.value = "Error: Non numeric";
+                return;
+            }
+
+            var sum = Number(v1) + Number(v2);
+            result.value = sum;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <form>
+
+        <input type="text" id="num1" onblur="validateInput()">
+
+        +
+
+        <input type="text" id="num2" onblur="validateInput()">
+
+        <input type="button" value="=" onclick="calculateSum()">
+
+        <input type="text" id="result" readonly>
+
+    </form>
+
+</body>
+
+</html>

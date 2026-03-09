@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Registration Form</title>
+
+<script>
+function showData(event)
+{
+    event.preventDefault();
+
+    var name = document.getElementById("ename").value;
+    var city = document.getElementById("city").value;
+
+    var male = document.getElementById("male");
+    var female = document.getElementById("female");
+
+    var gender = "";
+    var genderList = [male, female];
+
+    for(var i = 0; i < genderList.length; i++)
+    {
+        if(genderList[i].checked)
+        {
+            gender = genderList[i].value;
+        }
+    }
+
+    var result = "Participant: " + name + 
+                 " | Ticket Type: " + gender + 
+                 " | Event Location: " + city;
+
+    console.log(result);
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>Event Registration Form</h1>
+
+<form onsubmit="showData(event)">
+<table border="1">
+
+<tr>
+<td><label for="ename">Enter Participant Name</label></td>
+<td><input type="text" id="ename"></td>
+</tr>
+
+<tr>
+<td><label>Select Ticket Type</label></td>
+<td>
+<input type="radio" id="male" name="gender" value="Standard" required>
+<label for="male">Standard</label>
+
+<input type="radio" id="female" name="gender" value="VIP" required>
+<label for="female">VIP</label>
+</td>
+</tr>
+
+<tr>
+<td><label for="city">Select Event Location</label></td>
+<td>
+<select id="city">
+<option value="">Select</option>
+<option value="Delhi">Delhi</option>
+<option value="Mumbai">Mumbai</option>
+<option value="Bangalore">Bangalore</option>
+<option value="Hyderabad">Hyderabad</option>
+<option value="Cheenai">Chennai</option>
+
+</select>
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td><input type="submit"></td>
+<td><input type="reset"></td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>
