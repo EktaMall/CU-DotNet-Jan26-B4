@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sum</title>
+
+    <script>
+
+        function validateInput(x) {
+            var val = x.value
+
+            if (val == "") {
+                x.style.backgroundColor = "red"
+                return false
+            }
+
+            if (isNaN(val)) {
+                x.style.backgroundColor = "yellow"
+                return false
+            }
+
+            x.style.backgroundColor = "white"
+            return true
+        }
+
+        function calculate() {
+
+            var n1 = document.getElementById("num1").value
+            var n2 = document.getElementById("num2").value
+            var res = document.getElementById("result")
+
+            if (n1 == "" || n2 == "" || isNaN(n1) || isNaN(n2)) {
+                res.style.backgroundColor = "orange"
+                res.value = "Error"
+                return false
+            }
+
+            res.style.backgroundColor = "white"
+            res.value = Number(n1) + Number(n2)
+            return false
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <form onsubmit="return calculate()">
+
+        Number 1:
+        <input type="text" id="num1" onblur="validateInput(this)">
+        <br><br>
+
+        Number 2:
+        <input type="text" id="num2" onblur="validateInput(this)">
+        <br><br>
+
+        Result:
+        <input type="text" id="result" readonly>
+        <br><br>
+
+        <input type="submit" value="Enter">
+
+    </form>
+
+</body>
+
+</html>
