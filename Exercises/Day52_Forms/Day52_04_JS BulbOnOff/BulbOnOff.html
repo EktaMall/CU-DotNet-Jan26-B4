@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Switch</title>
+
+    <script>
+
+        function switchOn() {
+            document.getElementById("bulb").src = "/Day52_04/images/BULB2.jpeg";
+        }
+
+        function switchOff() {
+            document.getElementById("bulb").src = "/Day52_04/images/BULB1.jpeg";
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <body style="text-align:center; font-family:Arial"></body>
+    <input type="button" value="Switch Off" onclick="switchOff()">
+    <input type="button" value="Switch On" onclick="switchOn()">
+
+    <br><br>
+
+    <img id="bulb" src="/images/bulb2.jpg" alt="bulb" width="200">
+
+</body>
+
+</html>
