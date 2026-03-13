@@ -1,0 +1,53 @@
+﻿@model List<WebApplication4.Models.Employee>
+
+@{
+    ViewData["Title"] = "Corporate Pulse Portal";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Corporate Pulse Portal</h2>
+
+    <div class="alert alert-warning">
+        <strong>Announcement:</strong> @ViewBag.Announcement
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Department Information</h4>
+            <p><strong>Department:</strong> @ViewData["Department"]</p>
+
+            @if ((bool)ViewData["IsActive"])
+            {
+                <p class="text-success"><strong>Status:</strong> Department Active</p>
+            }
+            else
+            {
+                <p class="text-danger"><strong>Status:</strong> Department Under Maintenance</p>
+            }
+        </div>
+    </div>
+
+    <h4 class="mb-2">Employee List</h4>
+
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Position</td>
+                    <td>₹@emp.Salary.ToString("N0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

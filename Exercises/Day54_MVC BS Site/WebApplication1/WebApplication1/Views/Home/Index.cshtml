@@ -1,0 +1,74 @@
+﻿<div class="p-4 bg-light rounded">
+    <h1>Welcome to Company Portal</h1>
+    <p>Innovative technology solutions</p>
+
+    <button class="btn btn-outline-info " onclick="showToast()">Learn More</button>
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Icon/img1.jpeg" width="40"
+                 height="140" class="card-img-top" alt="Business Partnership">
+            <div class="card-body">
+                <h5 class="card-title">Business Consulting</h5>
+                <p>Professional consulting solutions for companies.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Icon/img2.jpeg" width="40"
+                 height="140" class="card-img-top" alt="Team Meeting">
+            <div class="card-body">
+                <h5 class="card-title">Team Collaboration</h5>
+                <p>Modern teamwork and strategic planning and innovative ideas.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Icon/img3.jpeg" width="40"
+                 height="140" class="card-img-top" alt="Technology Solutions">
+            <div class="card-body">
+                <h5 class="card-title">Technology Solutions</h5>
+                <p>Advanced software and digital transformation.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:11">
+
+    <div id="learnToast" class="toast align-items-center bg-info border-0">
+
+        <div class="d-flex">
+
+            <div class="toast-body">
+                Welcome to Company Portal
+                Explore our services and products.
+            </div>
+
+            <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"></button>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showToast()
+    {
+    var toastElement = document.getElementById('learnToast')
+    var toast = new bootstrap.Toast(toastElement)
+    toast.show()
+    }
+</script>
