@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mt-5">
+
+    <h1 class="display-4 fw-bold">FinTrack Pro</h1>
+
+    <p class="lead">
+        Smart Finance Tracking Dashboard
+    </p>
+
+    <div class="mt-4">
+
+        <a class="btn btn-primary m-2" asp-controller="Account" asp-action="Index">
+            Manage Accounts
+        </a>
+
+        <a class="btn btn-success m-2" asp-controller="Portfolio" asp-action="Index">
+            Portfolio
+        </a>
+
+        <a class="btn btn-warning m-2" asp-controller="Market" asp-action="Summary">
+            Market Summary
+        </a>
+
+    </div>
+
+</div>

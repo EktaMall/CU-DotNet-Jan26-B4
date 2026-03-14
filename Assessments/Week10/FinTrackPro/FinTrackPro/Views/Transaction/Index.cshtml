@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FinTrackPro.Models.Transaction>
+
+<h2>Transactions</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add Transaction</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Account Id</th>
+        <th>Account Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var t in Model)
+    {
+        <tr>
+            <td>@t.AccountId</td>
+            <td>@t.Account.Name</td>
+            <td>@t.Description</td>
+            <td>@t.Date.ToShortDateString()</td>
+            <td>@t.Amount</td>
+            <td>@t.Category</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@t.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@t.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@t.Id">Delete</a>
+            </td>
+
+        </tr>
+    }
+
+</table>

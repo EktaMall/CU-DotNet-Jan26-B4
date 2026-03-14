@@ -1,0 +1,22 @@
+﻿@model FinTrackPro.Models.Transaction
+
+<h2>Transaction Details</h2>
+
+<div class="card">
+
+    <div class="card-body">
+
+        <p><b>Account Id:</b> @Model.AccountId</p>
+        <p><b>Account Name:</b> @Model.Account.Name</p>
+        <p><b>Description:</b> @Model.Description</p>
+        <p><b>Date:</b> @Model.Date.ToShortDateString()</p>
+        <p><b>Amount:</b> @Model.Amount</p>
+        <p><b>Category:</b> @Model.Category</p>
+
+    </div>
+
+</div>
+
+<br>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

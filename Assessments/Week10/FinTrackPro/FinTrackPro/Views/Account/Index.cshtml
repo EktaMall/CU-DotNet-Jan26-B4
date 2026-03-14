@@ -1,0 +1,78 @@
+﻿@model List<FinTrackPro.Models.Account>
+
+<h2>Accounts</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add Account</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Name</td>
+                <td>@a.Balance</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-dark"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#tx-@a.Id">
+                        View Transactions
+                    </button>
+                </td>
+            </tr>
+
+            <tr class="collapse" id="tx-@a.Id">
+                <td colspan="3">
+
+                    @if (a.Transactions != null && a.Transactions.Count > 0)
+                    {
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in a.Transactions)
+                                {
+                                    <tr>
+                                        <td>@t.Description</td>
+                                        <td>@t.Amount</td>
+                                        <td>@t.Category</td>
+                                        <td>@t.Date.ToShortDateString()</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No transactions for this account.</p>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (TempData["Success"] != null)
+{
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast show bg-success text-white">
+            <div class="toast-body">
+                @TempData["Success"]
+            </div>
+        </div>
+    </div>
+}
