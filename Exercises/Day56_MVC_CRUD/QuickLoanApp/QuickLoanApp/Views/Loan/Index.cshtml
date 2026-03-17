@@ -1,0 +1,43 @@
+﻿@model List<QuickLoanApp.Models.Loan>
+
+<h2>Loan List</h2>
+
+<a asp-action="Add" class="btn btn-primary mb-3">Add Loan</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Borrower</th>
+        <th>Lender</th>
+        <th>Amount</th>
+        <th>Settled</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var loan in Model)
+    {
+        <tr>
+
+            <td>@loan.Id</td>
+            <td>@loan.BorrowerName</td>
+            <td>@loan.LenderName</td>
+            <td>@loan.Amount</td>
+            <td>@loan.IsSettled</td>
+
+            <td>
+
+                <a asp-action="Edit"
+                   asp-route-id="@loan.Id"
+                   class="btn btn-warning">Edit</a>
+
+                <a asp-action="Delete"
+                   asp-route-id="@loan.Id"
+                   class="btn btn-danger">Delete</a>
+
+            </td>
+
+        </tr>
+    }
+
+</table>

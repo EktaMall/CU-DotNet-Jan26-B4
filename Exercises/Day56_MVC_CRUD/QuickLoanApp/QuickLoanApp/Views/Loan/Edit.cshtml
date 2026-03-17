@@ -1,0 +1,34 @@
+﻿@model QuickLoanApp.Models.Loan
+
+<h2>Edit Loan</h2>
+
+<form asp-action="Edit">
+
+    <input asp-for="Id" type="hidden">
+
+    <div class="mb-3">
+        <label asp-for="BorrowerName"></label>
+        <input asp-for="BorrowerName" class="form-control">
+        <span asp-validation-for="BorrowerName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LenderName"></label>
+        <input asp-for="LenderName" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control">
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsSettled" class="form-check-input">
+        <label asp-for="IsSettled"></label>
+    </div>
+
+    <button class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>
