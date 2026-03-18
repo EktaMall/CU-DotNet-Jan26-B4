@@ -1,0 +1,66 @@
+﻿@model WealthTrack.Models.Investment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4 hover-card">
+
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Investment Details</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <dl class="row">
+
+                        <dt class="col-sm-4 fw-semibold">Ticker</dt>
+                        <dd class="col-sm-8">@Model.TickerSymbol</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Asset</dt>
+                        <dd class="col-sm-8">@Model.AssetName</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Price</dt>
+                        <dd class="col-sm-8">@Model.PurchasePrice</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Quantity</dt>
+                        <dd class="col-sm-8">@Model.Quantity</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Date</dt>
+                        <dd class="col-sm-8">@Model.PurchaseDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Total Value</dt>
+                        <dd class="col-sm-8 text-success fw-bold">
+                            @((Model.PurchasePrice * Model.Quantity).ToString("C"))
+                        </dd>
+
+                    </dl>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning px-4">
+                             Edit
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+</style>

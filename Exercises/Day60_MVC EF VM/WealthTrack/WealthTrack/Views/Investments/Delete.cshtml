@@ -1,0 +1,78 @@
+﻿@model WealthTrack.Models.Investment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4 hover-card">
+
+                <div class="card-header bg-danger text-white text-center">
+                    <h4> Confirm Delete</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-center text-muted">
+                        Are you sure you want to delete this investment?
+                    </p>
+
+                    <hr />
+
+                    <dl class="row">
+
+                        <dt class="col-sm-4 fw-semibold">Ticker</dt>
+                        <dd class="col-sm-8">@Model.TickerSymbol</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Asset</dt>
+                        <dd class="col-sm-8">@Model.AssetName</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Price</dt>
+                        <dd class="col-sm-8">@Model.PurchasePrice</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Quantity</dt>
+                        <dd class="col-sm-8">@Model.Quantity</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Date</dt>
+                        <dd class="col-sm-8">@Model.PurchaseDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Total Value</dt>
+                        <dd class="col-sm-8 text-success fw-bold">
+                            @((Model.PurchasePrice * Model.Quantity).ToString("C"))
+                        </dd>
+
+                    </dl>
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <button type="submit" class="btn btn-danger px-4">
+                                 Delete
+                            </button>
+                        </form>
+
+                    
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+</style>

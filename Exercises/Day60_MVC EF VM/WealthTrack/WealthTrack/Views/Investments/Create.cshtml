@@ -1,0 +1,79 @@
+﻿@model WealthTrack.Models.ViewModel.InvestmentCreateViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4>Create Investment</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Create">
+
+                        <div class="mb-3">
+                            <label asp-for="TickerSymbol" class="form-label fw-semibold"></label>
+                            <input asp-for="TickerSymbol" class="form-control form-control-lg" />
+                            <span asp-validation-for="TickerSymbol" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AssetName" class="form-label fw-semibold"></label>
+                            <input asp-for="AssetName" class="form-control form-control-lg"  />
+                            <span asp-validation-for="AssetName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label fw-semibold"></label>
+                            <input asp-for="Price" id="price" class="form-control form-control-lg" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Quantity" class="form-label fw-semibold"></label>
+                            <input asp-for="Quantity" id="quantity" class="form-control form-control-lg"  />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Total Value</label>
+                            <input id="totalValue" class="form-control form-control-lg bg-light fw-bold text-success" readonly />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg rounded-3">
+                                 Create Investment
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function calculateTotal() {
+            var price = parseFloat(document.getElementById("price").value) || 0;
+            var qty = parseInt(document.getElementById("quantity").value) || 0;
+
+            var total = price * qty;
+
+            document.getElementById("totalValue").value = total.toLocaleString('en-IN', {
+                style: 'currency',
+                currency: 'INR'
+            });
+        }
+
+        document.getElementById("price").addEventListener("input", calculateTotal);
+        document.getElementById("quantity").addEventListener("input", calculateTotal);
+    </script>
+}
