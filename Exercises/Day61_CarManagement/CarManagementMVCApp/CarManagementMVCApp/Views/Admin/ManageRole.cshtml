@@ -1,0 +1,41 @@
+﻿@model CarManagementMVCApp.Models.ManageRoleViewModel
+
+@{
+    ViewData["Title"] = "Manage Role";
+}
+
+<div class="form-wrapper">
+    <div class="premium-card p-4 p-md-5">
+        <h2 class="mb-4">Assign Role</h2>
+
+        <form asp-action="ManageRole" method="post">
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="mb-3">
+                <label class="form-label">User Email</label>
+                <input value="@Model.Email" class="form-control premium-input" readonly />
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="SelectedRole" class="form-label">Select Role</label>
+                <select asp-for="SelectedRole" class="form-control premium-input">
+                    <option value="">-- Select Role --</option>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex gap-3">
+                <button type="submit" class="btn premium-btn">Save Role</button>
+                <a asp-action="Users" class="btn premium-btn-outline">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

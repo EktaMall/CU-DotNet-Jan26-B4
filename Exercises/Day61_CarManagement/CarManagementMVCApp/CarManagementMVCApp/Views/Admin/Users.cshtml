@@ -1,0 +1,54 @@
+@model IEnumerable<CarManagementMVCApp.Models.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="premium-card p-4 p-md-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">User Management</h2>
+            <p class="text-muted mb-0">Admin can assign roles to users</p>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Current Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <td>
+                            <form asp-action="ChangeRole" method="post" class="d-flex gap-2">
+
+                                <input type="hidden" name="userId" value="@user.UserId" />
+
+                                <select name="role" class="form-select form-select-sm w-auto">
+
+                                    <option value="User" selected="@(user.Role == "User")">User</option>
+                                    <option value="Customer" selected="@(user.Role == "Customer")">Customer</option>
+                                    <option value="Admin" selected="@(user.Role == "Admin")">Admin</option>
+
+                                </select>
+
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    Update
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

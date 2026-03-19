@@ -1,0 +1,107 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+    }
+
+    .login-card {
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.3s ease;
+    }
+
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+    .left-panel {
+        background: linear-gradient(135deg, #212529, #343a40);
+    }
+
+    .btn-custom {
+        transition: 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+
+    .form-control:focus {
+        box-shadow: 0 0 8px rgba(13,110,253,0.5);
+        border-color: #0d6efd;
+    }
+</style>
+
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="row login-card shadow-lg" style="max-width: 900px; width:100%;">
+
+        <!-- LEFT SIDE -->
+        <div class="col-md-6 left-panel text-white d-flex flex-column justify-content-center align-items-center p-5">
+            <h1 class="fw-bold">Car Management System</h1>
+            <p class="text-center mt-3">
+                Manage your cars efficiently with a secure system.
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6 bg-white p-5">
+            <h3 class="mb-4 text-center fw-bold">Welcome Back</h3>
+
+            <form method="post">
+
+                <!-- 🔥 IMPORTANT (Fix redirect issue) -->
+                <input type="hidden" name="returnUrl" value="/" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Email -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                    <label>Email address</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password" />
+                    <label>Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <!-- Remember -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    <label class="form-check-label">Remember me</label>
+                </div>
+
+                <!-- Button -->
+                <button type="submit" class="btn btn-primary w-100 py-2 btn-custom">
+                    🔐 Login
+                </button>
+
+                <!-- Links -->
+                <div class="text-center mt-3">
+                    <a asp-page="./ForgotPassword">Forgot password?</a><br />
+
+                    <!-- 🔥 REMOVE returnUrl here -->
+                    <a asp-page="./Register">
+                        Create new account
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

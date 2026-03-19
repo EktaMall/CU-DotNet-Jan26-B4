@@ -1,0 +1,78 @@
+﻿@model CarManagementMVCApp.Models.Car
+
+@{
+    ViewData["Title"] = "Edit Car";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header bg-warning text-dark text-center rounded-top-4">
+                    <h3> Edit Car</h3>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <!-- Brand -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Brand" class="form-control" placeholder="Brand" />
+                            <label>Brand</label>
+                            <span asp-validation-for="Brand" class="text-danger"></span>
+                        </div>
+
+                        <!-- Model -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Model" class="form-control" placeholder="Model" />
+                            <label>Model</label>
+                            <span asp-validation-for="Model" class="text-danger"></span>
+                        </div>
+
+                        <!-- Year -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Year" class="form-control" placeholder="Year" />
+                            <label>Year</label>
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Price" class="form-control" placeholder="Price" />
+                            <label>Price</label>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning">
+                                 Save Changes
+                            </button>
+
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                 Back to List
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
