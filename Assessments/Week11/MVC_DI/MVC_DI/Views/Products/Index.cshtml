@@ -1,0 +1,35 @@
+﻿@model List<MVC_DI.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Original Price</th>
+            <th>Promo Code</th>
+            <th>Discounted Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>$@product.Price</td>
+                <td>@product.PromoCode</td>
+                <td>$@product.DiscountedPrice</td>
+                <td>
+                    <a asp-action="ApplyDiscount" asp-route-id="@product.Id" class="btn btn-primary btn-sm">Apply Discount</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Cart" asp-action="Index" class="btn btn-success">Go To Cart</a>

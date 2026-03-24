@@ -1,0 +1,34 @@
+﻿@model List<MVC_DI.Models.Product>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h2>Cart Items</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Original Price</th>
+            <th>Promo Code</th>
+            <th>Final Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>$@item.Price</td>
+                <td>@item.PromoCode</td>
+                <td>$@item.DiscountedPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Total: $@ViewBag.GrandTotal</h4>
+
+<a asp-action="Checkout" class="btn btn-warning">Proceed To Checkout</a>
+<a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back To Products</a>

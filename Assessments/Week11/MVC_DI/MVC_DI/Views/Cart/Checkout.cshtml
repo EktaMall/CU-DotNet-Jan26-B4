@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Checkout";
+    var promoCodes = ViewBag.PromoCodes as List<SelectListItem>;
+}
+
+<h2>Checkout</h2>
+
+<form asp-action="Checkout" method="post">
+    <div class="mb-3">
+        <label class="form-label">Select Promo Code</label>
+        <select name="promoCode" class="form-select" asp-items="promoCodes"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calculate Final Total</button>
+    <a asp-action="Index" class="btn btn-secondary">Back To Cart</a>
+</form>
+
+@if (ViewBag.FinalTotal != null)
+{
+    <div class="mt-4">
+        <h4>Applied Code: @ViewBag.AppliedCode</h4>
+        <h3>Final Total: $@ViewBag.FinalTotal</h3>
+    </div>
+}
