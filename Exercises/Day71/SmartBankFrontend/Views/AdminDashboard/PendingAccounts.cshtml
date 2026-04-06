@@ -1,0 +1,59 @@
+﻿@model List<SmartBankFrontend.DTOs.AccountDto>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">Pending Accounts</h2>
+
+    <!-- ✅ MESSAGE -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info text-center">
+            @TempData["Message"]
+        </div>
+    }
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <div class="alert alert-success text-center">
+            No pending accounts 🎉
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Account No</th>
+                    <th>Balance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var acc in Model)
+                {
+                    <tr>
+                        <td>@acc.Name</td>
+                        <td>@acc.AccountNumber</td>
+                        <td>₹ @acc.Balance</td>
+
+                        <td>
+                            <a asp-action="Approve"
+                                   asp-route-id="@acc.Id"
+                                   class="btn btn-success btn-sm">
+                                Approve
+                            </a>
+
+                            <a asp-action="Reject"
+                                   asp-route-id="@acc.Id"
+                                   class="btn btn-danger btn-sm ms-2">
+                                Reject
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,51 @@
+﻿@model List<SmartBankFrontend.DTOs.AccountDto>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4 text-center">All Accounts</h2>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <div class="alert alert-info text-center">
+            No accounts found
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Account No</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var acc in Model)
+                {
+                    <tr>
+                        <td>@acc.Name</td>
+                        <td>@acc.AccountNumber</td>
+                        <td>₹ @acc.Balance</td>
+                        <td>
+                            @if (acc.Status == "ACTIVE")
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else if (acc.Status == "PENDING")
+                            {
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Rejected</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

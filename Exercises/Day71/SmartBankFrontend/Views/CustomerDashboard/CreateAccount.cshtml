@@ -1,0 +1,23 @@
+﻿@model SmartBankFrontend.DTOs.CreateAccountDto
+
+<div class="container mt-5" style="max-width: 400px;">
+    <h3>Create Account</h3>
+
+    <form asp-action="CreateAccount" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Initial Deposit</label>
+            <input asp-for="InitialDeposit" type="number" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">
+            Create Account
+        </button>
+    </form>
+</div>

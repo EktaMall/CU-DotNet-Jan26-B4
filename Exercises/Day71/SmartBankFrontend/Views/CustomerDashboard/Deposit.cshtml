@@ -1,0 +1,18 @@
+﻿@model SmartBankFrontend.DTOs.TransactionDto
+
+<div class="container mt-5">
+    <h3>Deposit Money</h3>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="AccountId" />
+
+        <div class="mb-3">
+            <label>Amount</label>
+            <input asp-for="Amount" class="form-control" required />
+        </div>
+
+        <button class="btn btn-success">Deposit</button>
+    </form>
+</div>

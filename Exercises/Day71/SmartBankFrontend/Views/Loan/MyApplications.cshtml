@@ -1,0 +1,46 @@
+﻿@model List<SmartBankFrontend.DTOs.Loan.LoanApplicationDto>
+
+@{
+    ViewData["Title"] = "My Loan Applications";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">My Loan Applications</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div class="card shadow border-0 rounded-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Amount</th>
+                        <th>Tenure</th>
+                        <th>Interest</th>
+                        <th>Status</th>
+                        <th>Applied On</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.RequestedAmount</td>
+                            <td>@item.TenureMonths</td>
+                            <td>@item.AnnualInterestRate %</td>
+                            <td>@item.Status</td>
+                            <td>@item.AppliedOn.ToString("dd-MM-yyyy")</td>
+                            <td>@item.AdminRemarks</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

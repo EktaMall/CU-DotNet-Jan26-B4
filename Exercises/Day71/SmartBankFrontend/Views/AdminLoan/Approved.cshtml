@@ -1,0 +1,39 @@
+﻿@model List<SmartBankFrontend.DTOs.Loan.LoanDto>
+
+@{
+    ViewData["Title"] = "Approved Loans";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">Approved Loans</h2>
+
+    <div class="card shadow border-0 rounded-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Loan ID</th>
+                        <th>Customer</th>
+                        <th>Principal</th>
+                        <th>EMI</th>
+                        <th>Remaining</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.CustomerId</td>
+                            <td>@item.PrincipalAmount</td>
+                            <td>@item.EMIAmount</td>
+                            <td>@item.RemainingBalance</td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

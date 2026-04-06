@@ -1,0 +1,58 @@
+﻿@model List<SmartBankFrontend.DTOs.Loan.LoanApplicationDto>
+
+@{
+    ViewData["Title"] = "Pending Loan Requests";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">Pending Loan Requests</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-info">@TempData["Success"]</div>
+    }
+
+    <div class="card shadow border-0 rounded-4">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Tenure</th>
+                        <th>Income</th>
+                        <th>Purpose</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.CustomerId</td>
+                            <td>@item.RequestedAmount</td>
+                            <td>@item.TenureMonths</td>
+                            <td>@item.MonthlyIncome</td>
+                            <td>@item.Purpose</td>
+                            <td>
+                                <form asp-action="Approve" method="post" class="d-inline">
+                                    <input type="hidden" name="loanApplicationId" value="@item.Id" />
+                                    <input type="text" name="adminRemarks" class="form-control mb-2" placeholder="Remarks" />
+                                    <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                </form>
+
+                                <form asp-action="Reject" method="post" class="d-inline ms-2">
+                                    <input type="hidden" name="loanApplicationId" value="@item.Id" />
+                                    <input type="hidden" name="adminRemarks" value="Rejected by admin" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

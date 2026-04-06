@@ -1,0 +1,256 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 dashboard-shell">
+        <div class="card-body p-4 p-lg-5">
+
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <h2 class="fw-bold mb-1 text-gradient">
+                        <i class="bi bi-speedometer2 me-2"></i>Admin Dashboard
+                    </h2>
+                    <p class="text-muted mb-0">
+                        Manage accounts, approvals, and loan operations from one place.
+                    </p>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge rounded-pill bg-success px-3 py-2 fs-6 shadow-sm">
+                        <i class="bi bi-check-circle-fill me-1"></i> System Active
+                    </span>
+                    <span class="badge rounded-pill bg-dark-subtle text-dark px-3 py-2 fs-6 shadow-sm">
+                        <i class="bi bi-shield-lock-fill me-1"></i> Admin Access
+                    </span>
+                </div>
+            </div>
+
+            <!-- Top Summary -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="mini-stat stat-primary">
+                        <div>
+                            <small>Total Management</small>
+                            <h6 class="mb-0">Accounts</h6>
+                        </div>
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mini-stat stat-warning">
+                        <div>
+                            <small>Review Queue</small>
+                            <h6 class="mb-0">Pending Approvals</h6>
+                        </div>
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mini-stat stat-success">
+                        <div>
+                            <small>Loan Desk</small>
+                            <h6 class="mb-0">Loan Requests</h6>
+                        </div>
+                        <i class="bi bi-cash-coin"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mini-stat stat-dark">
+                        <div>
+                            <small>Approved Portfolio</small>
+                            <h6 class="mb-0">Active Loans</h6>
+                        </div>
+                        <i class="bi bi-bank2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Action Cards -->
+            <div class="row g-4">
+
+                <!-- All Accounts -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card border-0 shadow-sm h-100 rounded-4 hover-card card-accent-primary">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrap bg-primary-subtle text-primary">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h5 class="fw-semibold mt-3">All Accounts</h5>
+                            <p class="text-muted small mb-4">
+                                View and manage all customer accounts in the system.
+                            </p>
+                            <a asp-action="AllAccounts" class="btn btn-primary px-4 rounded-pill">
+                                View Accounts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Accounts -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card border-0 shadow-sm h-100 rounded-4 hover-card card-accent-warning">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrap bg-warning-subtle text-warning">
+                                <i class="bi bi-hourglass-split"></i>
+                            </div>
+                            <h5 class="fw-semibold mt-3">Pending Accounts</h5>
+                            <p class="text-muted small mb-4">
+                                Review and approve newly created customer account requests.
+                            </p>
+                            <a asp-action="PendingAccounts" class="btn btn-warning text-white px-4 rounded-pill">
+                                View Pending
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loan Requests -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card border-0 shadow-sm h-100 rounded-4 hover-card card-accent-success">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrap bg-success-subtle text-success">
+                                <i class="bi bi-cash-coin"></i>
+                            </div>
+                            <h5 class="fw-semibold mt-3">Loan Requests</h5>
+                            <p class="text-muted small mb-4">
+                                Check pending loan applications and approve or reject them.
+                            </p>
+                            <a asp-controller="AdminLoan" asp-action="Pending" class="btn btn-success px-4 rounded-pill">
+                                Review Loans
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Approved Loans -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card border-0 shadow-sm h-100 rounded-4 hover-card card-accent-dark">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrap bg-dark-subtle text-dark">
+                                <i class="bi bi-bank2"></i>
+                            </div>
+                            <h5 class="fw-semibold mt-3">Approved Loans</h5>
+                            <p class="text-muted small mb-4">
+                                Monitor all approved loans and track active loan records.
+                            </p>
+                            <a asp-controller="AdminLoan" asp-action="Approved" class="btn btn-dark px-4 rounded-pill">
+                                View Loans
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Quick Actions -->
+            <div class="mt-5 pt-3 border-top">
+                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                    <a asp-action="AllAccounts" class="btn btn-outline-primary rounded-pill">
+                        <i class="bi bi-list-ul me-1"></i> All Accounts
+                    </a>
+                    <a asp-action="PendingAccounts" class="btn btn-outline-warning rounded-pill">
+                        <i class="bi bi-clock-history me-1"></i> Pending Accounts
+                    </a>
+                    <a asp-controller="AdminLoan" asp-action="Pending" class="btn btn-outline-success rounded-pill">
+                        <i class="bi bi-clipboard-check me-1"></i> Loan Requests
+                    </a>
+                    <a asp-controller="AdminLoan" asp-action="Approved" class="btn btn-outline-dark rounded-pill">
+                        <i class="bi bi-journal-check me-1"></i> Approved Loans
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: #f4f7fb;
+    }
+
+    .dashboard-shell {
+        background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    }
+
+    .text-gradient {
+        background: linear-gradient(90deg, #0d6efd, #6610f2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hover-card {
+        transition: all 0.3s ease;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+        }
+
+    .icon-wrap {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+    }
+
+    .mini-stat {
+        border-radius: 18px;
+        padding: 16px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    }
+
+        .mini-stat i {
+            font-size: 1.8rem;
+            opacity: 0.95;
+        }
+
+    .stat-primary {
+        background: linear-gradient(135deg, #0d6efd, #3d8bfd);
+    }
+
+    .stat-warning {
+        background: linear-gradient(135deg, #f59f00, #fcc419);
+    }
+
+    .stat-success {
+        background: linear-gradient(135deg, #198754, #20c997);
+    }
+
+    .stat-dark {
+        background: linear-gradient(135deg, #212529, #495057);
+    }
+
+    .card-accent-primary {
+        border-top: 4px solid #0d6efd !important;
+    }
+
+    .card-accent-warning {
+        border-top: 4px solid #f59f00 !important;
+    }
+
+    .card-accent-success {
+        border-top: 4px solid #198754 !important;
+    }
+
+    .card-accent-dark {
+        border-top: 4px solid #212529 !important;
+    }
+</style>

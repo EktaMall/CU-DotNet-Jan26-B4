@@ -1,0 +1,30 @@
+﻿@model List<SmartBankFrontend.DTOs.Loan.LoanSummaryDto>
+
+@{
+    ViewData["Title"] = "Loan Summary";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">Loan Summary</h2>
+
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <div class="card shadow border-0 rounded-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Loan #@item.LoanId</h5>
+                        <p><strong>Principal:</strong> @item.PrincipalAmount</p>
+                        <p><strong>EMI:</strong> @item.EMIAmount</p>
+                        <p><strong>Total Repayable:</strong> @item.TotalRepayableAmount</p>
+                        <p><strong>Remaining:</strong> @item.RemainingBalance</p>
+                        <p><strong>Paid EMIs:</strong> @item.PaidEmis</p>
+                        <p><strong>Pending EMIs:</strong> @item.PendingEmis</p>
+                        <p><strong>Next Due:</strong> @(item.NextDueDate?.ToString("dd-MM-yyyy") ?? "-")</p>
+                        <p><strong>Status:</strong> @item.Status</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
