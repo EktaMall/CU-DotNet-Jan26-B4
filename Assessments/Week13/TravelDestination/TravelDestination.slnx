@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TravelDestinationApi/TravelDestinationApi.csproj" />
+  <Project Path="TravelDestinationFrontend/TravelDestinationFrontend.csproj" />
+</Solution>
