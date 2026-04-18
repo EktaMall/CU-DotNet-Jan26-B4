@@ -1,0 +1,198 @@
+/* ---------- THEME COLORS ---------- */
+:root {
+    --primary: #4b2e83;
+    --secondary: #8e2ba3;
+    --accent: #c94b9f;
+    --light: #e85cae;
+}
+
+/* ---------- GLOBAL ---------- */
+body {
+    background: linear-gradient(135deg, #4b2e83, #8e2ba3, #c94b9f, #e85cae);
+    min-height: 100vh;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background: rgba(0,0,0,0.3) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 20px 20px;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    text-shadow: 0 0 10px white;
+}
+
+/* ---------- GLASS ---------- */
+.glass {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ---------- GLOW ---------- */
+.glow {
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+}
+
+.glow:hover {
+    box-shadow: 0 0 60px rgba(255,255,255,0.5);
+}
+
+/* ---------- HERO ---------- */
+.hero-box {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero-title {
+    font-size: 42px;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.hero-sub {
+    opacity: 0.8;
+}
+
+/* ---------- HERO ROW (FIXED ALIGNMENT) ---------- */
+.hero-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    flex-wrap: nowrap;      /* 🔥 ONE LINE ONLY */
+    overflow-x: auto;       /* scroll on small screens */
+    padding: 20px 0;
+}
+
+/* SCROLLBAR */
+.hero-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hero-row::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.4);
+    border-radius: 10px;
+}
+
+/* ---------- FLOAT CARDS ---------- */
+.float-card {
+    min-width: 160px;
+    height: 230px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: 0.4s ease;
+}
+
+/* IMAGE */
+.float-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* HOVER EFFECT */
+.float-card:hover {
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: 0 0 30px rgba(255,255,255,0.6);
+}
+
+/* ---------- BUTTON ---------- */
+.btn-premium {
+    background: white;
+    color: black;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn-premium:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px white;
+}
+
+/* FIX HERO CENTERING */
+.hero-box {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HERO ROW FIX */
+.hero-row {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: nowrap;
+}
+
+/* CATEGORY FIX */
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+    .category-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 20px;
+        transition: 0.4s;
+    }
+
+    .category-card:hover img {
+        transform: scale(1.1);
+    }
+
+/* OVERLAY FIX */
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.4);
+    border-radius: 20px;
+}
+
+/* PRODUCT FIX */
+.product-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    }
+
+/* FADE ANIMATION */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
