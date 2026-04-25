@@ -1,0 +1,40 @@
+﻿@model List<NorthwindCatalog.Services.DTOs.ProductDto>
+
+<div class="container mt-5 fade-in">
+
+    <div class="glass glow p-5">
+
+        <h2 class="text-center mb-5">🛒 Products</h2>
+
+        <div class="row g-4">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+
+                    <div class="product-card p-3 h-100">
+
+                        <h6 class="fw-bold">@item.ProductName</h6>
+
+                        <p>💰 ₹@item.UnitPrice</p>
+                        <p>📦 @item.UnitsInStock</p>
+
+                        @if (item.UnitsInStock < 20)
+                        {
+                            <span class="badge bg-danger">Low Stock</span>
+                        }
+
+                        <hr />
+
+                        <p class="value">₹@item.InventoryValue</p>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>
